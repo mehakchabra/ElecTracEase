@@ -122,7 +122,12 @@ public class Signup extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource()== create){
+            //
+        } else if (e.getSource()==back) {
+            setVisible(false);
+            new Login();
+        }
     }
     public static void main(String[] args) {
         new Signup();
