@@ -60,6 +60,12 @@ public class Login extends JFrame implements ActionListener {
         cancelButton.addActionListener(this);
         add(cancelButton);
 
+        //Signup Button
+        signupButton = new JButton("Signup");
+        signupButton.setBounds(400,215,100,20);
+        signupButton.addActionListener(this);
+        add(signupButton);
+
         //Login Page Image
         ImageIcon profileOne =  new ImageIcon(ClassLoader.getSystemResource("icon/profile.png"));
         Image profileTwo = profileOne.getImage().getScaledInstance(250,250,Image.SCALE_DEFAULT);
@@ -67,12 +73,6 @@ public class Login extends JFrame implements ActionListener {
         JLabel profileLabel = new JLabel(fprofileOne);
         profileLabel.setBounds(5,5,250,250);
         add(profileLabel);
-
-        //Signup Button
-        signupButton = new JButton("Signup");
-        signupButton.setBounds(400,215,100,20);
-        signupButton.addActionListener(this);
-        add(signupButton);
 
         setSize(640,300);
         setLocation(300,200);
