@@ -81,7 +81,14 @@ public class Login extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource()==loginButton){
+            //
+        } else if (e.getSource()==cancelButton) {
+            setVisible(false);
+        } else if (e.getSource()==signupButton) {
+            setVisible(false);
+            new Signup();
+        }
     }
 
     public static void main(String[] args) {
