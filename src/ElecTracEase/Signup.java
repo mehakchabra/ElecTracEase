@@ -123,7 +123,28 @@ public class Signup extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()== create){
-            //
+            String sloginAs = loginASCho.getSelectedItem();
+            String susername = userNameText.getText();
+            String sname = nameText.getText();
+            String spassword = passwordText.getText();
+            String smeter = meterText.getText();
+            try{
+                Connectivity c = new Connectivity();
+                String query= null;
+                if (loginASCho.equals("Admin")) {
+                    query = "insert into signup values('" + smeter + "', '" + susername + "', '" + sname + "','" + spassword + "','" + sloginAs + "')";
+                }else {
+                    query = "update Signup set username = '"+susername+"', password = '"+spassword+"', usertype = '"+sloginAs+"' where meter_no = '"+smeter+"'";
+                }
+                c.statement.executeUpdate(query);
+
+                JOptionPane.showMessageDialog(null,"Account Created");
+                setVisible(false);
+                new Login();
+
+            }catch (Exception E){
+                E.printStackTrace();
+            }
         } else if (e.getSource()==back) {
             setVisible(false);
             new Login();
