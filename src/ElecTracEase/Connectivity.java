@@ -9,7 +9,7 @@ public class Connectivity {
     Statement statement;
     Connectivity(){
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/billing_system","root","Mehak@33Chabra");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bill_system","root","Mehak@33Chabra");
             statement = connection.createStatement();
         }catch (Exception e){
             e.printStackTrace();
