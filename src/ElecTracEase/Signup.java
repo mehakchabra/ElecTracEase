@@ -130,8 +130,8 @@ public class Signup extends JFrame implements ActionListener {
             String smeter = meterText.getText();
             try{
                 Connectivity c = new Connectivity();
-                String query= null;
-                if (loginASCho.equals("Admin")) {
+                String query;
+                if (loginASCho.getSelectedItem().equals("Admin")) {
                     query = "insert into signup values('" + smeter + "', '" + susername + "', '" + sname + "','" + spassword + "','" + sloginAs + "')";
                 }else {
                     query = "update Signup set username = '"+susername+"', password = '"+spassword+"', usertype = '"+sloginAs+"' where meter_no = '"+smeter+"'";
