@@ -6,7 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Dashboard extends JFrame implements ActionListener {
-    Dashboard(){
+    String acctype;
+    Dashboard(String acctype){
+        this.acctype = acctype;
 
         setExtendedState(JFrame.MAXIMIZED_BOTH); //To have a frame of Full Screen Size
 
@@ -22,7 +24,7 @@ public class Dashboard extends JFrame implements ActionListener {
         //As Admin Signin
         JMenu menu = new JMenu("Menu");
         menu.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(menu);
+
 
         JMenuItem newcustomer = new JMenuItem("New Customer");
         newcustomer.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -31,7 +33,7 @@ public class Dashboard extends JFrame implements ActionListener {
         newcustomer.setIcon(new ImageIcon(customerImage));
         newcustomer.setBackground(new Color(160, 202, 202));
         newcustomer.addActionListener(this);
-        menu.add(newcustomer);
+
 
         JMenuItem customerdetails = new JMenuItem("Customer Details");
         customerdetails.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -63,7 +65,7 @@ public class Dashboard extends JFrame implements ActionListener {
         //As User Signin
         JMenu info = new JMenu("Information");
         info.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(info);
+
 
         JMenuItem upinfo =new JMenuItem("Update Information");
         upinfo.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -86,7 +88,7 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenu user = new JMenu("User");
         user.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(user);
+
 
         JMenuItem paybill =new JMenuItem("Pay Bill");
         paybill.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -108,7 +110,6 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenu bill = new JMenu("Bill");
         bill.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(bill);
 
 
         JMenuItem genBill =new JMenuItem("Generate Bill");
@@ -122,7 +123,6 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenu utility = new JMenu("Utility");
         utility.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(utility);
 
 
         JMenuItem notepad =new JMenuItem("Notepad");
@@ -146,7 +146,6 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenu exit = new JMenu("Exit");
         exit.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(exit);
 
 
         JMenuItem eexit =new JMenuItem("Exit");
@@ -157,6 +156,15 @@ public class Dashboard extends JFrame implements ActionListener {
         eexit.setBackground(new Color(160, 202, 202));
         eexit.addActionListener(this);
         exit.add(eexit);
+
+        if (acctype.equals("Admin")){
+            menuBar.add(menu);
+        }
+        else {
+            menuBar.add(info);
+            menuBar.add(user);
+            menuBar.add(bill);
+        }
 
         menuBar.add(utility);
         menuBar.add(exit);
@@ -172,6 +180,6 @@ public class Dashboard extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Dashboard();
+        new Dashboard("");
     }
 }
