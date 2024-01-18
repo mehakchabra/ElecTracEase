@@ -6,9 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Dashboard extends JFrame implements ActionListener {
-    String acctype;
-    Dashboard(String acctype){
+    String acctype, meter;
+    Dashboard(String acctype, String meter){
         this.acctype = acctype;
+        this.meter = meter;
 
         setExtendedState(JFrame.MAXIMIZED_BOTH); //To have a frame of Full Screen Size
 
@@ -176,10 +177,44 @@ public class Dashboard extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        String msg = e.getActionCommand();
+        if (msg.equals("New Customer")) {
+            new NewCustomer();
+        } else if (msg.equals("Customer Details")) {
+            new CustomerDetails();
+        } else if (msg.equals("Deposit Details")) {
+            new DepositDetails();
+        } else if (msg.equals("Calculate Bill")) {
+            new CalculateBill();
+        } else if (msg.equals("View Information")) {
+            //new ViewInformation(meter);
+        } else if (msg.equals("Update Information")) {
+            //new UpdateInformation(meter_pass);
+        } else if (msg.equals("Bill Details")) {
+            //new BillDetails(meter_pass);
+        } else if (msg.equals("Calculator")) {
+            try{
+                Runtime.getRuntime().exec("calc.exe");
+            }catch (Exception E){
+                E.printStackTrace();
+            }
+        } else if (msg.equals("Notepad")) {
+            try{
+                Runtime.getRuntime().exec("notepad.exe");
+            }catch (Exception E){
+                E.printStackTrace();
+            }
+        } else if (msg.equals("Exit")) {
+            setVisible(false);
+            new Login();
+        } else if (msg.equals("Pay Bill")) {
+            //new PayBill(meter_pass);
+        } else if (msg.equals("Generate Bill")) {
+            //new GenerateBill(meter_pass);
+        }
     }
 
     public static void main(String[] args) {
-        new Dashboard("");
+        new Dashboard("","");
     }
 }
