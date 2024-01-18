@@ -2,10 +2,8 @@ package ElecTracEase;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
+import java.sql.ResultSet;
 
 public class Signup extends JFrame implements ActionListener {
     Choice loginASCho;
@@ -52,7 +50,7 @@ public class Signup extends JFrame implements ActionListener {
                 String user = loginASCho.getSelectedItem();
                 if (user.equals("Customer")){
                     Employer.setVisible(false);
-                    //nameText.setEditable(false);
+                    nameText.setEditable(false);
                     EmployerText.setVisible(false);
                     meterNo.setVisible(true);
                     meterText.setVisible(true);
@@ -88,6 +86,27 @@ public class Signup extends JFrame implements ActionListener {
         nameText = new TextField();
         nameText.setBounds(170, 180, 125, 20);
         add(nameText);
+
+        meterText.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                //
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try{
+                    Connectivity c = new Connectivity();
+                    ResultSet resultSet = c.statement.executeQuery("select * from Signup  where meter_no = '"+meterText.getText()+"'");
+                    if (resultSet.next()){
+                        nameText.setText(resultSet.getString("name"));
+                    }
+
+                }catch (Exception E){
+                    E.printStackTrace();
+                }
+            }
+        });
 
         ImageIcon boyIcon = new ImageIcon(ClassLoader.getSystemResource("icon/boy.png"));
         Image boyImg = boyIcon.getImage().getScaledInstance(250,250,Image.SCALE_DEFAULT);
