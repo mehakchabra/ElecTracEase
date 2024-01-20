@@ -11,7 +11,9 @@ public class UpdateInformation extends JFrame implements ActionListener {
     JTextField addressText,cityText,stateText,emailText,phoneText;
     String meter;
     JButton update,cancel;
-    UpdateInformation(){
+    UpdateInformation(String meter){
+
+        this.meter = meter;
 
         JLabel heading = new JLabel("Update Customer Information");
         heading.setBounds(50,10,400,40);
@@ -142,6 +144,6 @@ public class UpdateInformation extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new UpdateInformation();
+        new UpdateInformation("");
     }
 }
