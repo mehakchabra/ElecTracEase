@@ -210,7 +210,7 @@ public class Dashboard extends JFrame implements ActionListener {
         } else if (msg.equals("Pay Bill")) {
             new PayBill(meter);
         } else if (msg.equals("Generate Bill")) {
-            //new GenerateBill(meter_pass);
+            new GenerateBill(meter);
         }
     }
 
