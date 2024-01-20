@@ -187,11 +187,11 @@ public class Dashboard extends JFrame implements ActionListener {
         } else if (msg.equals("Calculate Bill")) {
             new CalculateBill();
         } else if (msg.equals("View Information")) {
-            //new ViewInformation(meter);
+            new ViewInformation(meter);
         } else if (msg.equals("Update Information")) {
-            //new UpdateInformation(meter_pass);
+            new UpdateInformation(meter);
         } else if (msg.equals("Bill Details")) {
-            //new BillDetails(meter_pass);
+            new BillDetails(meter);
         } else if (msg.equals("Calculator")) {
             try{
                 Runtime.getRuntime().exec("calc.exe");
